@@ -1,17 +1,37 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+        <x-header>
             {{ __('Dashboard') }}
-        </h2>
+        </x-header>
+
     </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
-                    {{ __("You're logged in!") }}
-                </div>
-            </div>
-        </div>
-    </div>
+    <x-container>
+        <x-form post :action="route('question.store')">
+
+            <x-textarea label="Question" name="question" />
+
+            <x-btn.primary>Save</x-button>
+
+            <x-btn.reset>Cancel</x-btn.reset>
+
+        </x-form>
+    </x-container>
+
+
+    {{-- Posso passar parâmetro para o blade  --}}
+    {{-- proprieedate. colocando : entende que é um código php, mas precisa colocar as   '' --}}
+    {{-- Existe essas 3 possibilidade de passar informações para as propriedades dos componentes --}}
+    {{-- <x-teste param1="oi">
+                <x-slot:title>
+                    <div class="text-blue-400">MEU TITULO AZUL</div>
+                </x-slot:title>
+                testeteee
+            </x-teste>
+            <x-teste title="diferent"/>
+            <x-teste  title="legal" />
+            <x-teste  title="show" />
+            <x-teste  title="mais um teste" /> --}}
+
+
 </x-app-layout>
