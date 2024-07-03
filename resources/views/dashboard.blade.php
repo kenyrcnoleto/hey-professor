@@ -31,7 +31,7 @@
             <x-teste title="diferent"/>
             <x-teste  title="legal" />
             <x-teste  title="show" />
-            <x-teste  title="mais um" /> --}}
+            <x-teste  title="mais um teste" /> --}}
 
 
 </x-app-layout>
