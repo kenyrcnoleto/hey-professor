@@ -14,7 +14,7 @@ test('it should be able like question ', function () {
 
     //laravel já sabe que $question é um model e vai passar o id por debaixo dos panos... o laravel busca através da função getRouteKey()
 
-    $route = route('question.like', 4);
+    // $route = route('question.like', 4);
 
     //dd($route);
 
