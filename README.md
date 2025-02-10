@@ -4,8 +4,3 @@
 
 ## About Hey Professor
 
-test
-test
-hey
-test
-test
