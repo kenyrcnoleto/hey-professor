@@ -28,7 +28,7 @@ COMMIT_MESSAGE=$(cat "$1")
 #  echo -e "${COMMIT_MESSAGE == ISSUE_ID*}"
 #     exit 1
 
- if [[ $COMMIT_MESSAGE == $ISSUE_ID* ]]; then
+ if [ $COMMIT_MESSAGE == $ISSUE_ID* ]; then
 
     exit 0
 
