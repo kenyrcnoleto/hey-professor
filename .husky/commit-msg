@@ -22,21 +22,11 @@ COMMIT_MESSAGE=$(cat "$1")
 #Prevent adding a  issue key in commits that already have a JIRA issue key
 #i.g. HEY-1: HEY-1: my feature
 
-#  echo -e "${COMMIT_MESSAGE}"
-#  echo -e "${ISSUE_ID}"
-#  echo -e "${ISSUE_ID*}"
-#  echo -e "${COMMIT_MESSAGE == ISSUE_ID*}"
-#     exit 1
+ case "$COMMIT_MESSAGE" in
 
-# case "$COMMIT_MESSAGE" in
-#     "$COMMIT_MESSAGE") exit 0 ;;
-# esac
+    "$ISSUE_ID"*) exit 0 ;;
 
- if [[ $COMMIT_MESSAGE == $ISSUE_ID* ]]; then
-
-    exit 0
-
- fi
+ esac
 
 echo "$ISSUE_ID: $COMMIT_MESSAGE" >$1
 
