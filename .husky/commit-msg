@@ -28,7 +28,7 @@ COMMIT_MESSAGE=$(cat "$1")
 #  echo -e "${COMMIT_MESSAGE == ISSUE_ID*}"
 #     exit 1
 
-$COMMIT_MESSAGE = $ISSUE_ID
+$COMMIT_MESSAGE=$ISSUE_ID
 case "$COMMIT_MESSAGE" in
     "$ISSUE_ID"*) exit 0 ;;
 esac
