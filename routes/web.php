@@ -21,6 +21,7 @@ Route::post('/question/store', [QuestionController::class, 'store'])->name('ques
 //interessante passar com o nome, e nome somente um id, pra ficar mais facil pra rastrear
 
 Route::post('/question/like/{question}', Question\LikeController::class)->name('question.like');
+Route::post('/question/unlike/{question}', Question\UnlikeController::class)->name('question.unlike');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
