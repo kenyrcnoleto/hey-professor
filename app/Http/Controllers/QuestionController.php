@@ -11,7 +11,7 @@ class QuestionController extends Controller
     public function store(): RedirectResponse
     {
 
-        // dd(request()->question);
+        //dd(request()->all());
 
         //  $question  = new Question();
         //  $question->question = request()->question;

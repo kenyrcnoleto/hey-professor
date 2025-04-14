@@ -21,5 +21,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Model::unguard();
+        //importante que o erro apareça somente em ambiente de desenvolvimento - previne o excesso que queries no relacionamento
+        Model::preventLazyLoading(!app()->isProduction());
     }
 }
