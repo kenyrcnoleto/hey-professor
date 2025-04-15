@@ -18,6 +18,7 @@ class QuestionFactory extends Factory
     {
         return [
             'question' => fake()->realText(maxNbChars: 50),
+            'draft'    => fake()->boolean,
         ];
     }
 }
