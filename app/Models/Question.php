@@ -13,6 +13,7 @@ class Question extends Model
     //protected $guarded = [];
     // protected $fillable = ['question'];
 
+    //$cast é um conversor - vai converter aquilo que pega do db para o tipo de dado coloco - DTO
     protected $casts = [
 
         'draft' => 'boolean',
