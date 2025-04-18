@@ -17,7 +17,7 @@ class QuestionController extends Controller
         //  $question->question = request()->question;
         //  $question->save();
 
-        $atributes = request()->validate([
+        request()->validate([
             'question' => [
                 'required',
                 'min:10',
@@ -30,10 +30,12 @@ class QuestionController extends Controller
             ],
         ]);
 
-        Question::query()->create([
-            'question' => request()->question,
-            'draft'    => true,
-        ]);
+        //Question::query()
+        user()->questions()
+            ->create([
+                'question' => request()->question,
+                'draft'    => true,
+            ]);
 
         return to_route('dashboard');
     }
