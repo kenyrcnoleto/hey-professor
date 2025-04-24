@@ -56,6 +56,11 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Vote::class);
     }
 
+    public function questions(): HasMany
+    {
+        return $this->hasMany(Question::class, 'created_by');
+    }
+
     public function like(Question $question): void
     {
         //utilizando o método de relacionamento - cria ou atitualiza através do atributo passado no 1° array
