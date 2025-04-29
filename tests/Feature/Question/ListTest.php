@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\{Question, User};
+use Illuminate\Pagination\LengthAwarePaginator;
 
 use function Pest\Laravel\{actingAs, get};
 
@@ -32,4 +33,20 @@ it('should list all the questions', function () {
     }
 
     //php artisan test --dirty roda a apenas os arquivos em que está trabalhando. propriedade pest 2.0
+});
+
+test('it should paginate result', function () {
+
+    $user = User::factory()->create();
+
+    $questions = Question::factory()->count(1)->create();
+
+    actingAs($user);
+
+    get(route('dashboard'))
+        ->assertViewHas(
+            'questions',
+            fn ($value) => $value instanceof LengthAwarePaginator
+        );
+
 });
