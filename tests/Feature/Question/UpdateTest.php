@@ -12,7 +12,7 @@ test('it should be able to uypdate a question', function () {
 
     put(route('question.update', $question), [
         'question' => 'Updated Question?',
-    ])->assertRedirect();
+    ])->assertRedirect(route('question.index'));
 
     $question->refresh();
 
