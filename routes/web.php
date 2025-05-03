@@ -22,7 +22,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/question/store', [QuestionController::class, 'store'])->name('question.store');
     Route::get('/question/{question}/edit', [QuestionController::class, 'edit'])->name('question.edit');
     Route::put('/question/{question}', [QuestionController::class, 'update'])->name('question.update');
-    Route::patch('/question/{question}', [QuestionController::class, 'archive'])->name('question.archive');
+    Route::patch('/question/{question}/archive', [QuestionController::class, 'archive'])->name('question.archive');
+    Route::patch('/question/{question}/restore', [QuestionController::class, 'restore'])->name('question.restore');
     Route::delete('/question/{question}', [QuestionController::class, 'destroy'])->name('question.destroy');
     //interessante passar com o nome, e nome somente um id, pra ficar mais facil pra rastrear
     Route::post('/question/like/{question}', Question\LikeController::class)->name('question.like');

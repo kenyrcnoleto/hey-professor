@@ -2,7 +2,7 @@
 
 use App\Models\{Question, User};
 
-use function Pest\Laravel\{actingAs, assertDatabaseMissing, assertSoftDeleted, patch, put};
+use function Pest\Laravel\{actingAs, assertDatabaseMissing, assertNotSoftDeleted, assertSoftDeleted, patch, put};
 
 test('it should be ble to archive a question', function () {
 
@@ -41,4 +41,26 @@ test('it should make sure that only the person who create the question can archi
     patch(route('question.archive', $question))
         ->assertRedirect();
 
+});
+
+test('it should be able to restore a archive question', function () {
+    $user = User::factory()->create();
+
+    $question = Question::factory()
+        ->for($user, 'createdBy')
+        ->create(['draft' => true, 'deleted_at' => now()]);
+
+    actingAs($user);
+
+    //Forma de encontrar o erro no dia a dia - salvar dentro de uma variável e colocar um dd.
+
+    patch(route('question.restore', $question))
+         ->assertRedirect();
+    //dd($response);
+
+    assertNotSoftDeleted('questions', ['id' => $question->id]);
+
+    expect($question)
+        ->refresh()
+        ->deleted_at->toBeNull();
 });

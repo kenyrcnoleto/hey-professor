@@ -88,6 +88,17 @@ class QuestionController extends Controller
         return back();
     }
 
+    public function restore(int $id): RedirectResponse
+    {
+        //Forma de encontrar qual rota que esta buscando e o método em que está caindo dd(__METHOD__);
+
+        $question = Question::withTrashed()->find($id);
+
+        $question->restore();
+
+        return back();
+    }
+
     public function destroy(Question $question): RedirectResponse
     {
         $this->authorize('destroy', $question);
